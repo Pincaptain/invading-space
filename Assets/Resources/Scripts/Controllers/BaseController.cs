@@ -27,7 +27,7 @@ public class BaseController : MonoBehaviour
 
     private GameObject LifeImage;
 
-    private GameObject[] Enemies;
+    public List<GameObject> Enemies;
 
     private void Awake()
     {
@@ -54,13 +54,6 @@ public class BaseController : MonoBehaviour
         PointsText = GameObject.Find("TPoints");
 
         LifeImage = Resources.Load("Graphics/Prefabs/ILife") as GameObject;
-
-        Enemies = new GameObject[]
-        {
-            Enemies[0] = Resources.Load("Graphics/Prefabs/Enemies") as GameObject,
-            Enemies[1] = Resources.Load("Graphics/Prefabs/Enemies1") as GameObject,
-            Enemies[2] = Resources.Load("Graphics/Prefabs/Enemies2") as GameObject,
-        };
 
         SetRandomBackground();
         SetDefaultCursor();

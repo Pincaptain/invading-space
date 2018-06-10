@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Akatosh\.Rider2018.1\system\resharper-host\local\Transient\ReSharperHost\v12\SolutionCaches\_Invading Space.47828666.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Akatosh\Desktop\Akatosh\United\Invading Space" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets\External" t="Include">
+        <e p="UI" t="Include">
+          <e p="Fonts" t="Include">
+            <e p="Jupiter" t="Include">
+              <e p="LICENSE.txt" t="Include" />
+            </e>
+          </e>
+          <e p="Materials" t="Include">
+            <e p="UI-Default-No-Alpha.shader" t="Include" />
+          </e>
+          <e p="Scripts" t="Include">
+            <e p="ActiveStateToggler.cs" t="Include" />
+            <e p="ApplicationManager.cs" t="Include" />
+            <e p="ChangeColor.cs" t="Include" />
+            <e p="DragMe.cs" t="Include" />
+            <e p="DragPanel.cs" t="Include" />
+            <e p="DropMe.cs" t="Include" />
+            <e p="PanelManager.cs" t="Include" />
+            <e p="ResizePanel.cs" t="Include" />
+            <e p="ScrollDetailTexture.cs" t="Include" />
+            <e p="ShowSliderValue.cs" t="Include" />
+            <e p="TiltWindow.cs" t="Include" />
+          </e>
+          <e p="Textures and Sprites" t="Include">
+            <e p="SF UI" t="Include">
+              <e p="Background" t="Include">
+                <e p="LICENSE.txt" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="Assets\Resources" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="Controllers" t="Include">
+            <e p="BaseController.cs" t="Include" />
+            <e p="IntroController.cs" t="Include" />
+            <e p="SoundController.cs" t="Include" />
+          </e>
+          <e p="Models" t="Include">
+            <e p="Drop.cs" t="Include" />
+            <e p="Enemy.cs" t="Include" />
+            <e p="Laser.cs" t="Include" />
+            <e p="Player.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Invading Space.sln" t="IncludeFlat" />
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
+    </e>
+  </component>
+</project>
