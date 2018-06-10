@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SoundController : MonoBehaviour
 {
@@ -33,7 +30,7 @@ public class SoundController : MonoBehaviour
 
     private void SetAudioState()
     {
-        bool mute = false;
+        bool mute;
         bool.TryParse(PlayerPrefs.GetString("Mute"), out mute);
 
         if (mute)
@@ -50,30 +47,6 @@ public class SoundController : MonoBehaviour
     {
         AudioSource.clip = clip;
         AudioSource.Play();
-    }
-
-    public void StopClip()
-    {
-        if (AudioSource.clip != null)
-        {
-            AudioSource.Stop();
-        }
-    }
-
-    public void PauseClip()
-    {
-        if (AudioSource.clip != null)
-        {
-            AudioSource.Pause();
-        }
-    }
-
-    public void UnPauseClip()
-    {
-        if (AudioSource.clip != null)
-        {
-            AudioSource.UnPause();
-        }
     }
 
     public void MuteClips()
@@ -94,23 +67,4 @@ public class SoundController : MonoBehaviour
         PlayerPrefs.SetString("Mute", "false");
     }
 
-    public float PositionClip(int i)
-    {
-        if (AudioSources[i].clip == null)
-        {
-            return -1;
-        }
-
-        return AudioSources[i].time;
-    }
-
-    public void PositionClip(int i, float position)
-    {
-        if (AudioSources[i].clip == null)
-        {
-            return;
-        }
-
-        AudioSources[i].time = position;
-    }
 }

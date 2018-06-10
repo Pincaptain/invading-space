@@ -9,23 +9,23 @@ public class BaseController : MonoBehaviour
 {
     public static BaseController Instance;
 
-    private float Scale;
-    private int Level;
-    private int EnemiesCount = 27;
+    private float scale;
+    private int level;
+    private int enemiesCount = 27;
 
     public Texture2D CursorTexture;
 
-    private GameObject MenuPanel;
-    private GameObject OverPanel;
-    private GameObject LivesPanel;
-    private GameObject LevelPanel;
-    private GameObject VictoryPanel;
-    private GameObject BackgroundPanel;
+    private GameObject menuPanel;
+    private GameObject overPanel;
+    private GameObject livesPanel;
+    private GameObject levelPanel;
+    private GameObject victoryPanel;
+    private GameObject backgroundPanel;
 
-    private GameObject MuteText;
-    private GameObject PointsText;
+    private GameObject muteText;
+    private GameObject pointsText;
 
-    private GameObject LifeImage;
+    private GameObject lifeImage;
 
     public List<GameObject> Enemies;
 
@@ -40,20 +40,20 @@ public class BaseController : MonoBehaviour
             Destroy(this);
         }
 
-        Level = 1;
+        level = 1;
         Time.timeScale = 1;
 
-        MenuPanel = GameObject.Find("PMenu");
-        OverPanel = GameObject.Find("POver");
-        LivesPanel = GameObject.Find("PLives");
-        LevelPanel = GameObject.Find("PLevel");
-        VictoryPanel = GameObject.Find("PVictory");
-        BackgroundPanel = GameObject.Find("PBackground");
+        menuPanel = GameObject.Find("PMenu");
+        overPanel = GameObject.Find("POver");
+        livesPanel = GameObject.Find("PLives");
+        levelPanel = GameObject.Find("PLevel");
+        victoryPanel = GameObject.Find("PVictory");
+        backgroundPanel = GameObject.Find("PBackground");
 
-        MuteText = GameObject.Find("TMute");
-        PointsText = GameObject.Find("TPoints");
+        muteText = GameObject.Find("TMute");
+        pointsText = GameObject.Find("TPoints");
 
-        LifeImage = Resources.Load("Graphics/Prefabs/ILife") as GameObject;
+        lifeImage = Resources.Load("Graphics/Prefabs/ILife") as GameObject;
 
         SetRandomBackground();
         SetDefaultCursor();
@@ -61,18 +61,16 @@ public class BaseController : MonoBehaviour
 
     private void SetRandomBackground()
     {
-        List<Object> resources = Resources.LoadAll("Graphics/Backgrounds").ToList();
-        List<Sprite> textures = new List<Sprite>();
-
-        textures = resources
+        var resources = Resources.LoadAll("Graphics/Backgrounds").ToList();
+        var textures = resources
             .Where(resource => resource is Sprite)
             .Cast<Sprite>()
             .ToList();
 
-        BackgroundPanel.GetComponent<Image>().sprite = textures[Random.Range(0, textures.Count)];
+        backgroundPanel.GetComponent<Image>().sprite = textures[Random.Range(0, textures.Count)];
     }
 
-    public void SetDefaultCursor()
+    private void SetDefaultCursor()
     {
         CursorTexture = CursorTexture == null ? Resources.Load("Graphics/Textures/UI/cursor") as Texture2D : CursorTexture;
 
@@ -89,7 +87,7 @@ public class BaseController : MonoBehaviour
 
     private void SetAudioState()
     {
-        MuteText.GetComponent<Text>().text = SoundController.Instance.AudioIsMute ? "Unmute" : "Mute";
+        muteText.GetComponent<Text>().text = SoundController.Instance.AudioIsMute ? "Unmute" : "Mute";
     }
 
     private void SetPlayerState()
@@ -100,73 +98,72 @@ public class BaseController : MonoBehaviour
 
     public void UpdatePlayerPoints()
     {
-        PointsText.GetComponent<Text>().text = string.Format("{0:0000000000000}", Player.Instance.PlayerPoints);
+        pointsText.GetComponent<Text>().text = string.Format("{0:0000000000000}", Player.Instance.PlayerPoints);
     }
 
     public void UpdatePlayerLives()
     {
         int lives = Player.Instance.PlayerLives;
 
-        foreach (Transform child in LivesPanel.transform)
+        foreach (Transform child in livesPanel.transform)
         {
             Destroy(child.gameObject);
         }
 
-        for (int i = 0; i < lives; i++)
+        for (var i = 0; i < lives; i++)
         {
-            Instantiate(LifeImage, LivesPanel.transform, false);
+            Instantiate(lifeImage, livesPanel.transform, false);
         }
     }
 
     public void UpdateEnemiesCount()
     {
-        EnemiesCount--;
+        enemiesCount--;
 
-        if (EnemiesCount == 0)
+        if (enemiesCount != 0) return;
+        
+        if (level == 5)
         {
-            if (Level == 5)
-            {
-                Victory();
-            }
-            else
-            {
-                Level++;
-                SetLevelState();
-            }
-        } 
+            Victory();
+        }
+        else
+        {
+            level++;
+            SetLevelState();
+        }
     }
 
-    public void SetLevelState()
+    private void SetLevelState()
     {
         StartCoroutine(SetLevelCoroutine());
     }
 
-    IEnumerator SetLevelCoroutine()
+    private IEnumerator SetLevelCoroutine()
     {
-        Show(true, LevelPanel.GetComponent<RectTransform>());
-        LevelPanel.GetComponentInChildren<Text>().text = string.Format("Wave {0}", Level);
+        Show(true, levelPanel.GetComponent<RectTransform>());
+        levelPanel.GetComponentInChildren<Text>().text = string.Format("Wave {0}", level);
 
         yield return new WaitForSeconds(1);
 
-        Show(false, LevelPanel.GetComponent<RectTransform>());
+        Show(false, levelPanel.GetComponent<RectTransform>());
         SetRandomBackground();
         StartNormalLevel();
     }
 
-    public void StartNormalLevel()
+    private void StartNormalLevel()
     {
-        int selected = Random.Range(0, 3);
-        Vector3 startingPosition = new Vector3(0, 4, 0);
-        Quaternion startingRotation = Enemies[selected].transform.rotation;
+        var selected = Random.Range(0, 3);
+        var startingPosition = new Vector3(0, 4, 0);
+        var startingRotation = Enemies[selected].transform.rotation;
 
-        GameObject instance = Instantiate(Enemies[selected], startingPosition, startingRotation);
+        var instance = Instantiate(Enemies[selected], startingPosition, startingRotation);
         instance.name = "Enemies";
-        EnemiesCount = 27;
+        enemiesCount = 27;
     }
 
     public void ToggleMenu()
     {
-        RectTransform menuRectTransform = MenuPanel.GetComponent<RectTransform>();
+        var menuRectTransform = menuPanel.GetComponent<RectTransform>();
 
         if (!IsVisible(menuRectTransform))
         {
@@ -184,10 +181,10 @@ public class BaseController : MonoBehaviour
         }
     }
 
-    private void Show(bool show, RectTransform transform)
+    private static void Show(bool show, Transform transform)
     {
-        Vector3 visibleScale = new Vector3(1, 1, 1);
-        Vector3 invisibleScale = new Vector3(0, 0, 0);
+        var visibleScale = new Vector3(1, 1, 1);
+        var invisibleScale = new Vector3(0, 0, 0);
 
         transform.localScale = show ? visibleScale : invisibleScale;
 
@@ -195,13 +192,12 @@ public class BaseController : MonoBehaviour
             .Cast<Transform>()
             .Where(c => c.GetComponent<Button>() != null)
             .ToList()
-            .ForEach(c => c.GetComponent<Button>().interactable = show ? true : false);
+            .ForEach(c => c.GetComponent<Button>().interactable = show);
     }
 
-    private bool IsVisible(RectTransform transform)
+    private static bool IsVisible(Transform transform)
     {
-        Vector3 visibleScale = new Vector3(1, 1, 1);
-        Vector3 invisibleScale = new Vector3(0, 0, 0);
+        var visibleScale = new Vector3(1, 1, 1);
 
         return transform.localScale == visibleScale;
     }
@@ -233,23 +229,23 @@ public class BaseController : MonoBehaviour
     public void GameOver()
     {
         Cursor.visible = true;
-        Show(true, OverPanel.GetComponent<RectTransform>());
+        Show(true, overPanel.GetComponent<RectTransform>());
     }
 
-    public void Victory()
+    private void Victory()
     {
         Cursor.visible = true;
-        Show(true, VictoryPanel.GetComponent<RectTransform>());
+        Show(true, victoryPanel.GetComponent<RectTransform>());
     }
 
     public void PauseGame()
     {
-        Scale = Time.timeScale;
+        scale = Time.timeScale;
         Time.timeScale = 0;
     }
 
     public void UnPauseGame()
     {
-        Time.timeScale = Scale;
+        Time.timeScale = scale;
     }
 }

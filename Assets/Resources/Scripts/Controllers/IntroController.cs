@@ -1,32 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class IntroController : MonoBehaviour
 {
-    public static IntroController Instance;
+    private static IntroController _instance;
 
     public Texture2D CursorTexture;
 
     public AudioClip StartSound;
     public AudioClip ExitSound;
     
-    private GameObject MuteText;
+    private GameObject muteText;
 
     private void Awake()
     {
-        if (Instance == null)
+        if (_instance == null)
         {
-            Instance = this;
+            _instance = this;
         }
-        else if (Instance != this)
+        else if (_instance != this)
         {
             Destroy(this);
         }
 
-        MuteText = GameObject.Find("TMute");
+        muteText = GameObject.Find("TMute");
 
         SetDefaultCursor();
         SetDefaultAudioClips();
@@ -51,7 +49,7 @@ public class IntroController : MonoBehaviour
 
     private void SetAudioState()
     {
-        MuteText.GetComponent<Text>().text =
+        muteText.GetComponent<Text>().text =
             SoundController.Instance.AudioIsMute ? "Unmute" : "Mute";
     }
 

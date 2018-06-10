@@ -1,55 +1,37 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Drop : MonoBehaviour
 {
-    // Static player predefined variables
-    public static float DEFAULT_DROP_SPEED = 5;
+    private const float DefaultDropSpeed = 5;
 
-    // Drop properties
     public float DropSpeed;
 
-    // Drop audio properties
     public AudioClip DropObtainClip;
-
-    // Drop visual properties
-    public SpriteRenderer DropSpriteRenderer;
 
     private void Awake()
     {
         SetDropProperties();
         SetDropAudioProperties();
-        SetDropVisualProperties();
     }
 
     private void SetDropProperties()
     {
-        // Set default drop properties
-        DropSpeed = DropSpeed == 0 ? DEFAULT_DROP_SPEED : DropSpeed;
+        // ReSharper disable once CompareOfFloatsByEqualityOperator
+        DropSpeed = DropSpeed == 0 ? DefaultDropSpeed : DropSpeed;
     }
 
     private void SetDropAudioProperties()
     {
-        // Set default drop audio properties
         DropObtainClip = DropObtainClip == null ? Resources.Load("Sounds/sfx_drop_obtain") as AudioClip : DropObtainClip;
-    }
-
-    private void SetDropVisualProperties()
-    {
-        // Set default drop visual properties
-        DropSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
-        // Handle drop update
         HandleDrop();
     }
 
     private void HandleDrop()
     {
-        // Move the laser down the y axis
         transform.Translate(Vector2.down * DropSpeed * Time.deltaTime);
     }
 
@@ -58,29 +40,23 @@ public class Drop : MonoBehaviour
         Hit(collision);
     }
 
-    protected void Hit(Collider2D collision)
+    private void Hit(Component collision)
     {
-        // Assert is player
-        if (IsPlayer(collision))
-        {
-            // Upgrade the player sprite
-            Player.Instance.PlayerUpgradeSprite();
-            // Play obtain sound
-            SoundController.Instance.PlayClip(DropObtainClip);
+        if (!IsPlayer(collision)) return;
+        
+        Player.Instance.PlayerUpgradeSprite();
+        SoundController.Instance.PlayClip(DropObtainClip);
 
-            // Destroy the gameobject
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 
-    private bool IsPlayer(Collider2D collision)
+    private static bool IsPlayer(Component collision)
     {
-        return collision.tag == "Player";
+        return collision.CompareTag("Player");
     }
 
     private void OnBecameInvisible()
     {
-        // Assert away from camera and destroy
         Destroy(gameObject);
     }
 }
