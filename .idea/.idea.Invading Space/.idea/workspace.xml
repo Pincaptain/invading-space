@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="565cc7f4-a23f-44fc-99b1-6edca85857ec" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/Models/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/Models/Enemy.cs" afterDir="false" />
-    </list>
+    <list default="true" id="565cc7f4-a23f-44fc-99b1-6edca85857ec" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,8 +14,8 @@
       <file leaf-file-name="Enemy.cs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Resources/Scripts/Models/Enemy.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="119" selection-end-line="141" />
+            <state relative-caret-position="468">
+              <caret line="122" column="52" lean-forward="true" selection-start-line="122" selection-start-column="52" selection-end-line="122" selection-end-column="52" />
               <folding>
                 <marker date="1528928968953" expanded="true" signature="55:4725" ph="{...}" />
                 <marker date="1528928968953" expanded="true" signature="713:851" ph="{...}" />
@@ -162,12 +160,12 @@
       <option name="presentableId" value="Default" />
       <updated>1528626327749</updated>
       <workItem from="1528626347239" duration="4319000" />
-      <workItem from="1528928172683" duration="675000" />
+      <workItem from="1528928172683" duration="678000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4994000" />
+    <option name="totallyTimeSpent" value="4997000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -180,7 +178,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="Errors In Solution" order="3" />
@@ -290,8 +287,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Resources/Scripts/Models/Enemy.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="119" selection-end-line="141" />
+        <state relative-caret-position="468">
+          <caret line="122" column="52" lean-forward="true" selection-start-line="122" selection-start-column="52" selection-end-line="122" selection-end-column="52" />
           <folding>
             <marker date="1528928968953" expanded="true" signature="55:4725" ph="{...}" />
             <marker date="1528928968953" expanded="true" signature="713:851" ph="{...}" />
