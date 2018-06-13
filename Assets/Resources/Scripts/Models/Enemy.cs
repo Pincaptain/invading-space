@@ -117,7 +117,7 @@ public class Enemy : MonoBehaviour {
         Hit(collision);
     }
 
-    private void Hit(Collider2D collision) {
+    private void Hit(Component collision) {
         if (!IsLethal(collision)) return;
 
         Player.Instance.PlayerPoints += EnemyPoints;
