@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
-public class SoundController : MonoBehaviour {
-    
+public class SoundController : MonoBehaviour
+{
     public static SoundController Instance;
 
     public bool AudioIsMute;
@@ -12,9 +12,12 @@ public class SoundController : MonoBehaviour {
 
     private void Awake()
     {
-        if (Instance == null) {
+        if (Instance == null)
+        {
             Instance = this;
-        } else if (Instance != this) {
+        }
+        else if (Instance != this)
+        {
             Destroy(this);
         }
 
@@ -25,23 +28,29 @@ public class SoundController : MonoBehaviour {
         SetAudioState();
     }
 
-    private void SetAudioState() {
+    private void SetAudioState()
+    {
         bool mute;
         bool.TryParse(PlayerPrefs.GetString("Mute"), out mute);
 
-        if (mute) {
+        if (mute)
+        {
             MuteClips();
-        } else {
+        }
+        else
+        {
             UnMuteClips();
         }
     }
 
-    public void PlayClip(AudioClip clip) {
+    public void PlayClip(AudioClip clip)
+    {
         AudioSource.clip = clip;
         AudioSource.Play();
     }
 
-    public void MuteClips() {
+    public void MuteClips()
+    {
         AudioIsMute = true;
         BackgroundSource.mute = true;
         AudioSource.mute = true;
@@ -49,12 +58,12 @@ public class SoundController : MonoBehaviour {
         PlayerPrefs.SetString("Mute", "true");
     }
 
-    public void UnMuteClips() {
+    public void UnMuteClips()
+    {
         AudioIsMute = false;
         BackgroundSource.mute = false;
         AudioSource.mute = false;
 
         PlayerPrefs.SetString("Mute", "false");
     }
-
 }

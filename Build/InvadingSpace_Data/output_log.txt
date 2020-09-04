@@ -5,56 +5,19 @@ Direct3D:
     Renderer: NVIDIA GeForce GTX 1050 (ID=0x1c8d)
     Vendor:   NVIDIA
     VRAM:     3072 MB
-    Driver:   24.21.13.9793
+    Driver:   27.21.14.5206
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\Akatosh\Desktop\Akatosh\United\Invading Space\Build\InvadingSpace_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\Akatosh\Desktop\Akatosh\United\Invading Space\Build\InvadingSpace_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\Akatosh\Desktop\Akatosh\United\Invading Space\Build\InvadingSpace_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\Akatosh\Desktop\Akatosh\United\Invading Space\Build\InvadingSpace_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\Akatosh\Desktop\Akatosh\United\Invading Space\Build\InvadingSpace_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\Akatosh\Desktop\Akatosh\United\Invading Space\Build\InvadingSpace_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: C:\Users\Akatosh\Desktop\Akatosh\United\Invading Space\Build\InvadingSpace_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\Users\Akatosh\Desktop\Akatosh\United\Invading Space\Build\InvadingSpace_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Borjan Gjorovski\Projects\C#\Unity\Invading Space\Build\InvadingSpace_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Borjan Gjorovski\Projects\C#\Unity\Invading Space\Build\InvadingSpace_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Borjan Gjorovski\Projects\C#\Unity\Invading Space\Build\InvadingSpace_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Borjan Gjorovski\Projects\C#\Unity\Invading Space\Build\InvadingSpace_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Borjan Gjorovski\Projects\C#\Unity\Invading Space\Build\InvadingSpace_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Borjan Gjorovski\Projects\C#\Unity\Invading Space\Build\InvadingSpace_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Borjan Gjorovski\Projects\C#\Unity\Invading Space\Build\InvadingSpace_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Borjan Gjorovski\Projects\C#\Unity\Invading Space\Build\InvadingSpace_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 - Completed reload, in  0.018 seconds
-Platform assembly: C:\Users\Akatosh\Desktop\Akatosh\United\Invading Space\Build\InvadingSpace_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: C:\Users\Akatosh\Desktop\Akatosh\United\Invading Space\Build\InvadingSpace_Data\Managed\System.dll (this message is harmless)
-desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+Platform assembly: C:\Users\Borjan Gjorovski\Projects\C#\Unity\Invading Space\Build\InvadingSpace_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Borjan Gjorovski\Projects\C#\Unity\Invading Space\Build\InvadingSpace_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 59Hz; virtual: 3840x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
-<RI> Initialized touch support.
-UnloadTime: 62.384899 ms
-Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 17.332100 ms
-
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 1006.
-Total: 0.587600 ms (FindLiveObjects: 0.092500 ms CreateObjectMapping: 0.078100 ms MarkObjects: 0.397500 ms  DeleteObjects: 0.018900 ms)
-
-Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.340400 ms
-
-Unloading 22 unused Assets to reduce memory usage. Loaded Objects now: 1006.
-Total: 0.764200 ms (FindLiveObjects: 0.118200 ms CreateObjectMapping: 0.033900 ms MarkObjects: 0.441900 ms  DeleteObjects: 0.169700 ms)
-
-Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.685900 ms
-
-Unloading 22 unused Assets to reduce memory usage. Loaded Objects now: 1003.
-Total: 0.382500 ms (FindLiveObjects: 0.031700 ms CreateObjectMapping: 0.027500 ms MarkObjects: 0.267700 ms  DeleteObjects: 0.055100 ms)
-
-Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.050800 ms
-
-Unloading 22 unused Assets to reduce memory usage. Loaded Objects now: 1003.
-Total: 0.382200 ms (FindLiveObjects: 0.034700 ms CreateObjectMapping: 0.028000 ms MarkObjects: 0.261800 ms  DeleteObjects: 0.057100 ms)
-
-Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.404900 ms
-
-Unloading 22 unused Assets to reduce memory usage. Loaded Objects now: 1006.
-Total: 0.723500 ms (FindLiveObjects: 0.074000 ms CreateObjectMapping: 0.058200 ms MarkObjects: 0.501600 ms  DeleteObjects: 0.089300 ms)
-
-Setting up 4 worker threads for Enlighten.
-  Thread -> id: 291c -> priority: 1 
-  Thread -> id: 1464 -> priority: 1 
-  Thread -> id: 34a8 -> priority: 1 
-  Thread -> id: 2794 -> priority: 1 

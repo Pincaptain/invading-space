@@ -2,9 +2,9 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class IntroController : MonoBehaviour {
-    
-    private static IntroController _instance;
+public class IntroController : MonoBehaviour
+{    
+    private static IntroController instance;
 
     public Texture2D CursorTexture;
 
@@ -15,9 +15,12 @@ public class IntroController : MonoBehaviour {
 
     private void Awake()
     {
-        if (_instance == null) {
-            _instance = this;
-        } else if (_instance != this) {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
             Destroy(this);
         }
 
@@ -27,43 +30,52 @@ public class IntroController : MonoBehaviour {
         SetDefaultAudioClips();
     }
 
-    private void SetDefaultCursor() {
+    private void SetDefaultCursor()
+    {
         CursorTexture = CursorTexture == null ? Resources.Load("Graphics/Textures/UI/cursor") as Texture2D : CursorTexture;
         Cursor.SetCursor(CursorTexture, Vector2.zero, CursorMode.Auto);
     }
 
-    private void SetDefaultAudioClips() {
+    private void SetDefaultAudioClips()
+    {
         StartSound = StartSound == null ? Resources.Load("Sounds/sfx_zap") as AudioClip : StartSound;
         ExitSound = ExitSound == null ? Resources.Load("Sounds/sfx_zap") as AudioClip : ExitSound;
     }
 
-    private void Start() {
+    private void Start()
+    {
         SetAudioState();
     }
 
-    private void SetAudioState() {
+    private void SetAudioState()
+    {
         muteText.GetComponent<Text>().text =
             SoundController.Instance.AudioIsMute ? "Unmute" : "Mute";
     }
 
-    public void StartGame() {
+    public void StartGame()
+    {
         SoundController.Instance.PlayClip(StartSound);
         SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
     }
 
-    public void ExitGame() {
+    public void ExitGame()
+    {
         SoundController.Instance.PlayClip(ExitSound);
         Application.Quit();
     }
 
-    public void MuteGame() {
-        if (SoundController.Instance.AudioIsMute) {
+    public void MuteGame()
+    {
+        if (SoundController.Instance.AudioIsMute)
+        {
             SoundController.Instance.UnMuteClips();
-        } else {
+        }
+        else
+        {
             SoundController.Instance.MuteClips();
         }
 
         SetAudioState();
     }
-
 }
