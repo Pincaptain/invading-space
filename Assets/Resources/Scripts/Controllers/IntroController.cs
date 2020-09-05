@@ -12,6 +12,7 @@ public class IntroController : MonoBehaviour
     public AudioClip ExitSound;
     
     private GameObject muteText;
+    private GameObject rotationText;
 
     private void Awake()
     {
@@ -25,6 +26,7 @@ public class IntroController : MonoBehaviour
         }
 
         muteText = GameObject.Find("TMute");
+        rotationText = GameObject.Find("TRotation");
 
         SetDefaultCursor();
         SetDefaultAudioClips();
@@ -45,12 +47,27 @@ public class IntroController : MonoBehaviour
     private void Start()
     {
         SetAudioState();
+        SetRotationState();
     }
 
     private void SetAudioState()
     {
         muteText.GetComponent<Text>().text =
             SoundController.Instance.AudioIsMute ? "Unmute" : "Mute";
+    }
+
+    private void SetRotationState()
+    {
+        bool rotationState = IntToBool(PlayerPrefs.GetInt("rotation", 0));
+
+        rotationText.GetComponent<Text>().text = 
+            rotationState ? "Disable Rotation" : "Enable Rotation";
+    }
+
+    private void SetRotationState(bool rotationState)
+    {
+        rotationText.GetComponent<Text>().text = 
+            rotationState ? "Disable Rotation" : "Enable Rotation";
     }
 
     public void StartGame()
@@ -77,5 +94,20 @@ public class IntroController : MonoBehaviour
         }
 
         SetAudioState();
+    }
+
+    public void AllowRotation()
+    {
+        int initial = PlayerPrefs.GetInt("rotation", 0);
+        int current = initial == 0 ? 1 : 0;
+
+        PlayerPrefs.SetInt("rotation", current);
+
+        SetRotationState(IntToBool(current));
+    }
+
+    private bool IntToBool(int value)
+    {
+        return value != 0;
     }
 }

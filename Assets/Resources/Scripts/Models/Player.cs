@@ -103,6 +103,7 @@ public class Player : MonoBehaviour
     {
         HandlePlayer();
         HandlePlayerInput();
+        HandlePlayerRotation();
     }
 
     private void HandlePlayer()
@@ -142,6 +143,19 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) {
             Shoot();
         }
+    }
+
+    private void HandlePlayerRotation()
+    {
+        if (!BaseController.Instance.RotationIsAllowed)
+        {
+            return;
+        } 
+
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 direction = (mousePosition - (Vector2) transform.position).normalized;
+
+        transform.up = direction;
     }
 
     private void Move(Vector3 vector)

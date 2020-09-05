@@ -15,6 +15,8 @@ public class BaseController : MonoBehaviour
     private int level;
     private int enemiesCount = 27;
 
+    public bool RotationIsAllowed;
+
     public Texture2D CursorTexture;
 
     private GameObject menuPanel;
@@ -42,6 +44,9 @@ public class BaseController : MonoBehaviour
 
         level = 1;
         Time.timeScale = 1;
+
+        bool rotationState = PlayerPrefs.GetInt("rotation", 0) != 0;
+        RotationIsAllowed = rotationState;
 
         menuPanel = GameObject.Find("PMenu");
         overPanel = GameObject.Find("POver");
@@ -72,7 +77,15 @@ public class BaseController : MonoBehaviour
     {
         CursorTexture = CursorTexture == null ? Resources.Load("Graphics/Textures/UI/cursor") as Texture2D : CursorTexture;
         Cursor.SetCursor(CursorTexture, Vector2.zero, CursorMode.Auto);
-        Cursor.visible = false;
+
+        if (RotationIsAllowed)
+        {
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.visible = false;
+        }
     }
 
     private void Start()
