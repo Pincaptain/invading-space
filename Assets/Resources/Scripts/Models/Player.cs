@@ -102,8 +102,16 @@ public class Player : MonoBehaviour
     private void Update()
     {
         HandlePlayer();
-        HandlePlayerInput();
-        HandlePlayerRotation();
+
+
+        if (BaseController.Instance.RotationIsAllowed)
+        {
+            HandlePlayerRotation();
+        }
+        else
+        {
+            HandlePlayerInput();
+        }
     }
 
     private void HandlePlayer()
@@ -123,39 +131,52 @@ public class Player : MonoBehaviour
 
     private void HandlePlayerInput()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
             BaseController.Instance.ToggleMenu();
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) {
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        {
             Move(Vector3.left);
         }
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) {
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        {
             Move(Vector3.right);
         }
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) {
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+        {
             Move(Vector3.up);
         }
-        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) {
+        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+        {
             Move(Vector3.down);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
             Shoot();
         }
     }
 
     private void HandlePlayerRotation()
     {
-        if (!BaseController.Instance.RotationIsAllowed)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            return;
-        } 
-
+            BaseController.Instance.ToggleMenu();
+        }
+        
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (mousePosition - (Vector2) transform.position).normalized;
+        Vector2 newPosition = new Vector2(mousePosition.x, mousePosition.y - 0.5f);
 
         transform.up = direction;
+        transform.position = Vector2.Lerp(transform.position, newPosition, 0.1f);
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Shoot();
+        }
     }
 
     private void Move(Vector3 vector)
